@@ -12,3 +12,6 @@ body {
 
   font-family: "Courier New", Courier, monospace;
 }
+input[type="text"]:focus {
+  box-shadow: none;
+}

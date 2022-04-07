@@ -45,74 +45,42 @@
             {{ appName }}
           </div>
           <div class="card-body">
-            <p class="card-title text-warning h4 fw-bold">Add Todo</p>
-            <form action="" class="form">
+            <p class="card-title text-warning h4 fw-bold">
+              Add Todo <span v-if="todo" class="text-danger">"{{ todo }}"</span>
+            </p>
+            <form action="" class="form" @submit.prevent="addTodo">
               <div class="d-flex justify-content-between align-items-center">
                 <input
                   type="text"
                   id="todo"
                   class="form-control"
-                  placeholder="Enter Tasks"
+                  placeholder="Enter Todo"
+                  v-model="todo"
+                  autofocus
                 />
                 <input type="submit" class="btn btn-warning ms-3" value="Add" />
               </div>
             </form>
           </div>
-          <div class="card border-0">
+          <div class="card border-0" v-if="todolist.length">
             <div class="card-body">
               <div class="card-title h4 text-warning fw-bold">Todo Lists</div>
-              <div class="list-group">
+              <div class="list-group" v-for="(todo,index) in todolist">
                 <label
                   class="list-group-item d-flex justify-content-between align-items-center"
+                  :key="index"
                 >
                   <div>
                     <input
                       class="form-check-input me-1"
                       type="checkbox"
-                      value=""
+                      id="todocheck"
                     />
-                    To eat
+                    <label for="todocheck" class="todo">{{ todo }}</label>
                   </div>
-                  <i class="fa fa-trash text-danger"></i>
-                </label>
-                <label
-                  class="list-group-item d-flex justify-content-between align-items-center"
-                >
-                  <div>
-                    <input
-                      class="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                    />
-                    To sleep
+                  <div @click="removeTodo(index)">
+                    <i class="fa fa-trash text-danger"></i>
                   </div>
-                  <i class="fa fa-trash text-danger"></i>
-                </label>
-                <label
-                  class="list-group-item d-flex justify-content-between align-items-center"
-                >
-                  <div>
-                    <input
-                      class="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                    />
-                    To code
-                  </div>
-                  <i class="fa fa-trash text-danger"></i>
-                </label>
-                <label
-                  class="list-group-item d-flex justify-content-between align-items-center"
-                >
-                  <div>
-                    <input
-                      class="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                    />
-                    To fap
-                  </div>
-                  <i class="fa fa-trash text-danger"></i>
                 </label>
               </div>
             </div>
