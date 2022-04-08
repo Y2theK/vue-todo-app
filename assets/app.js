@@ -23,8 +23,8 @@ const app = Vue.createApp({
     removeTodo(index) {
       this.todolist.splice(index, 1);
     },
-    markCompleted(index) {
-      this.todolist[index].isCompleted = !this.todolist[index].isCompleted;
+    markCompleted(todo) {
+      todo.isCompleted = !todo.isCompleted;
     },
   },
 });
