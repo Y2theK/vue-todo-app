@@ -44,9 +44,13 @@
           <div class="card-header text-danger h3 text-center fw-bold">
             {{ appName }}
           </div>
+
           <div class="card-body">
             <p class="card-title text-warning h4 fw-bold">
-              Add Todo <span v-if="todo" class="text-danger">"{{ todo }}"</span>
+              Add Todo
+              <span v-if="todo.name" class="text-danger"
+                >"{{ todo.name }}"</span
+              >
             </p>
             <form action="" class="form" @submit.prevent="addTodo">
               <div class="d-flex justify-content-between align-items-center">
@@ -55,7 +59,7 @@
                   id="todo"
                   class="form-control"
                   placeholder="Enter Todo"
-                  v-model="todo"
+                  v-model="todo.name"
                   autofocus
                 />
                 <input type="submit" class="btn btn-warning ms-3" value="Add" />
@@ -70,13 +74,21 @@
                   class="list-group-item d-flex justify-content-between align-items-center"
                   :key="index"
                 >
-                  <div>
+                  <div @click="markCompleted(index)">
                     <input
-                      class="form-check-input me-1"
+                      class="form-check-input me-2"
                       type="checkbox"
+                      value="asdf"
                       id="todocheck"
+                      :checked="todo.isCompleted"
+                      :class="[todo.isCompleted ? 'bg-warning' : '']"
                     />
-                    <label for="todocheck" class="todo">{{ todo }}</label>
+                    <label
+                      for="todocheck"
+                      class="todo"
+                      :class="[todo.isCompleted ? 'opacity-50 text-uppercase text-decoration-line-through' : '']"
+                      >{{ todo.name }}</label
+                    >
                   </div>
                   <div @click="removeTodo(index)">
                     <i class="fa fa-trash text-danger"></i>

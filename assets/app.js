@@ -2,22 +2,29 @@ const app = Vue.createApp({
   data() {
     return {
       appName: "Vue Todo App",
-      todo: "",
+      todo: { name: "", isCompleted: false },
       todolist: [],
     };
   },
   methods: {
     addTodo() {
-      if (this.todo == "") {
+      if (this.todo.name == "") {
         alert("Enter todo and try again");
         return;
       }
-      this.todolist.push(this.todo);
-      this.todo = "";
+      this.todolist.push({
+        name: this.todo.name,
+        isCompleted: false,
+      });
+
+      this.todo.name = "";
+      this.todo.isCompleted = false;
     },
     removeTodo(index) {
       this.todolist.splice(index, 1);
-      console.log(index);
+    },
+    markCompleted(index) {
+      this.todolist[index].isCompleted = !this.todolist[index].isCompleted;
     },
   },
 });
