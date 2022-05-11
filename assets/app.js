@@ -3,7 +3,11 @@ const app = Vue.createApp({
     return {
       appName: "Vue Todo App",
       todo: { name: "", isCompleted: false },
-      todolist: [],
+      todolist: [
+        { name: "to code", isCompleted: false },
+        { name: "to swim", isCompleted: true },
+        { name: "to do exercise", isCompleted: false },
+      ],
     };
   },
   methods: {

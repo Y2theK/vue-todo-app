@@ -78,7 +78,6 @@
                     <input
                       class="form-check-input me-2"
                       type="checkbox"
-                      value="asdf"
                       id="todocheck"
                       :checked="todo.isCompleted"
                       :class="[todo.isCompleted ? 'bg-warning' : '']"
@@ -97,6 +96,9 @@
               </div>
             </div>
           </div>
+          <h3 v-else class="text-center mt-4 text-danger fw-bold">
+            No jobs to do right now..!
+          </h3>
         </div>
       </div>
     </div>
